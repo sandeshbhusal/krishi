@@ -41,10 +41,28 @@ def showCropsList(request):
 def cropDetails(request, cropid):
     # Whatever the cropid, we need its data from the database.
     # Uncomment these lines when done.
-    # crop = models.Crops.get(id=cropid)
+    # crop = models.Crops.get(pk=cropid)
 
-    
+    # Get the crop details.
+    detailDict = {
+        "cropName": crop.cropName,
+        "altitude": crop.altitude,
+        "humidity": crop.humidity,
+        "temperature": crop.temperature,
+        "manpower": crop.manpower,
+        "fertilizer": crop.fertilizer,
+        "insecticides": crop.insecticides,
+        "pesticides": crop.pesticides,
+        "investment": crop.investment,
+        "turnover": crop.turnover,
+        "breakeven": crop.breakeven
+    }
 
+    places = crop.places
+
+    countries = places.split(",")
+
+    # This section is purely for the map.
     # Crop growing countries:
     countries = ['Nepal', 'India', 'Bhutan', 'Greece', 'Norway', 'Brazil', 'Chile', 'Canada']
     m = folium.Map(location = [0, 0], zoom_start = 1)
@@ -60,4 +78,4 @@ def cropDetails(request, cropid):
                 folium.Marker([result['latitude'], result['longitude']], popup = f'{country}').add_to(m)
                 break
 
-    return render(request, "cropdetails.html", {"map_": m._repr_html_()})
+    return render(request, "cropdetails.html", {"map_": m._repr_html_(), "data": detailDict})
