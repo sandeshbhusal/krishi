@@ -7,5 +7,6 @@ from . import views
 urlpatterns = [
     path('', views.indexView, name = "homepage"),
     path('secondpage/', views.secondPage, name = "secondpage"),
-    path('cropslist', views.showCropsList)
+    path('cropslist', views.showCropsList),
+    path('cropdetails/<int:cropid>', views.cropDetails, name = 'cropdetails')
 ]

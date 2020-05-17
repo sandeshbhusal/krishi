@@ -1,5 +1,8 @@
 from django.shortcuts import render
+from . import models
 import requests
+import geocoder
+import folium
 
 # Create your views here.
 
@@ -35,3 +38,26 @@ def secondPage(request, *args, **kwargs):
 def showCropsList(request):
 	return render(request, "cropslist.html", {})
 
+def cropDetails(request, cropid):
+    # Whatever the cropid, we need its data from the database.
+    # Uncomment these lines when done.
+    # crop = models.Crops.get(id=cropid)
+
+    
+
+    # Crop growing countries:
+    countries = ['Nepal', 'India', 'Bhutan', 'Greece', 'Norway', 'Brazil', 'Chile', 'Canada']
+    m = folium.Map(location = [0, 0], zoom_start = 1)
+    # Start reverse geocoding countries and put markers on map.
+    for country in countries:
+        # Reverse geocode:
+        api = f"http://api.positionstack.com/v1/forward?access_key=391ce60377e3a2b284675d583b2b703b&query={country}"
+        response = requests.get(api)
+        json = response.json()
+        # Search json items
+        for result in json.get("data"):
+            if result['name'] == result['country']:
+                folium.Marker([result['latitude'], result['longitude']], popup = f'{country}').add_to(m)
+                break
+
+    return render(request, "cropdetails.html", {"map_": m._repr_html_()})
