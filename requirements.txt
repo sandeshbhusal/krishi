@@ -16,6 +16,8 @@ idna==2.9
 Jinja2==2.11.2
 MarkupSafe==1.1.1
 numpy==1.18.4
+pandas==1.0.3
+python-dateutil==2.8.1
 pytz==2020.1
 ratelim==0.1.6
 requests==2.23.0
