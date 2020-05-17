@@ -91,7 +91,8 @@ def cropDetails(request, cropid):
     # Get the crop details.
     detailDict = {
         "cropName": crop.cropName or  "apple",
-        "altitude": crop.altitude or  "100ft",
+        "altitude": crop.minAltitude or  "100ft",
+        "altitude": crop.maxAltitude or  "3000ft",
         "humidity": crop.humidity or  "20",
         "temperature": crop.temperature or  "10*C",
         "manpower": crop.manpower or  "10 people",
