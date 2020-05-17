@@ -62,7 +62,7 @@
                 </table>
 
                 <br />
-                <button type = "button" class = "btn btn-primary">
+                <button type = "button" id = 'searchRouteButton' class = "btn btn-primary">
                     Search for crops
                 </button>
             </div>
@@ -88,5 +88,14 @@
                 padding-left: 50px;
             }
         </style>
+        <script>
+            var searchRouteButton = document.querySelector("#searchRouteButton");
+            searchRouteButton.addEventListener("click", routeSearchPage);
+
+            function routeSearchPage(){
+                // First get the window location.
+                console.log(window.location)
+            }
+        </script>
     </body>
 </html>

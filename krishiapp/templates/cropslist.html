@@ -29,43 +29,65 @@
 
 
     <body>
-        <p>Based on your location, the following crops are available.</p>
-        
-        <label for="months">Month:</label>
-        <select id="months">
-          <option value="Jan">Jan</option>
-          <option value="Feb">Feb</option>
-          <option value="Mar">Mar</option>
-          <option value="Apr">Apr</option>
-          <option value="May">May</option>
-          <option value="Jun">Jun</option>
-          <option value="Jul">Jul</option>
-          <option value="Aug">Aug</option>
-          <option value="Sep">Sep</option>
-          <option value="Oct">Oct</option>
-          <option value="Nov">Nov</option>
-          <option value="Dec">Dec</option>
-        </select>
-        
-        <table>
-          <tr>
-            <th>Crop Name</th>
-            <th>Altitude</th>
-            <th>Humidity</th>
-            <th>Temperature</th>
-            <th>Actions</th>
-          </tr>
 
-        {% for crop in crops %}
-          <tr>
-            <td>{{crop.name}}</td>
-            <td>{{crop.altitude}}</td>
-            <td>{{crop.humidity}}</td>
-            <td>{{crop.temperature}}</td>
-            <td>
-              <button>View Details</button>
-            </td>
-          </tr>
-        {% endfor %}
+      <nav class="navbar navbar-light">
+        <div class = 'col-md-3'>
+
+        </div>
+        <div class = 'col-md-6'>
+
+            <a class="navbar-brand" href="#">
+                <img src="https://cdn1.iconfinder.com/data/icons/andriod-app-logo/32/icon_k-512.png" width="30" height="30" alt="">
+                &nbsp; &nbsp; के रोप्ने ?
+            </a>
+        </div>
+        <div class = 'col-md-3'>
+            
+        </div>
+      </nav>
+      <br /><br />
+      <div class = 'row'>
+        <div class = 'col-md-3'></div>
+        <div class = 'col-md-6'>
+          <p>Based on your location, the following crops are available.</p>
+          <label for="months">Month:</label>
+          <select id="months">
+            <option value="Jan">Jan</option>
+            <option value="Feb">Feb</option>
+            <option value="Mar">Mar</option>
+            <option value="Apr">Apr</option>
+            <option value="May">May</option>
+            <option value="Jun">Jun</option>
+            <option value="Jul">Jul</option>
+            <option value="Aug">Aug</option>
+            <option value="Sep">Sep</option>
+            <option value="Oct">Oct</option>
+            <option value="Nov">Nov</option>
+            <option value="Dec">Dec</option>
+          </select>
+          
+          <table>
+            <tr>
+              <th>Crop Name</th>
+              <th>Altitude</th>
+              <th>Humidity</th>
+              <th>Temperature</th>
+              <th>Actions</th>
+            </tr>
+
+          {% for crop in crops %}
+            <tr>
+              <td>{{crop.name}}</td>
+              <td>{{crop.altitude}}</td>
+              <td>{{crop.humidity}}</td>
+              <td>{{crop.temperature}}</td>
+              <td>
+                <button>View Details</button>
+              </td>
+            </tr>
+          {% endfor %}
+        </div>
+        <div class = 'col-md-3'></div>
+      </div>
     </body>
 </html>
