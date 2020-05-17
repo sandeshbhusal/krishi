@@ -25,9 +25,12 @@ class Crops(models.Model):
         return self.cropName
 
     def distance(self, yourAltitude, yourTemperature, yourHumidity):
-        avgalt   = (self.minAltitude + self.maxAltitude)/2
-        normalt  = (avgalt - 10)/(4000-10)
-        normtemp = (self.temperature + 1)/(42 + 1)
-        normhum  = (self.humidity -25)/(65 - 25)
-        dist     = 1 * (normalt - yourAltitude)**2 + 1 * (normtemp - yourTemperature)**2 + 1* (normhum - yourHumidity)**2
+        avgalt          = (self.minAltitude + self.maxAltitude)/2
+        normalt         = (avgalt - 10)/(4000-10)
+        normtemp        = (self.temperature + 1)/(42 + 1)
+        normhum         = (self.humidity -25)/(65 - 25)
+        yourAltitude    = (yourAltitude - 10)/(4000-10)
+        yourHumidity    = (yourHumidity -25)/(65-25)
+        yourTemperature = (yourTemperature +1)/(42 +1)
+        dist            = 1 * (normalt - yourAltitude)**2 + 1 * (normtemp - yourTemperature)**2 + 1* (normhum - yourHumidity)**2
         return dist
