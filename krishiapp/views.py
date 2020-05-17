@@ -66,10 +66,10 @@ def secondPage(request, *args, **kwargs):
     return render(request, "apiCallAndScan.html", context={"data": data})
   
 def showCropsList(request):
-	#PRASANGA --- CROPS HERE HAI !! 
-    youralt  = 2000
-    yourtemp = 30
-    yourhum  = 40
+    # Get the params from Url.
+    youralt  = request.GET.get("altitude")
+    yourtemp = request.GET.get("temperature")
+    yourhum  = request.GET.get("humidity")
     queryset = Crops.objects.all()
     # queryset = sorted( queryset, key= lambda t:t.distance(youralt, yourtemp, yourhum))
     crops = []
