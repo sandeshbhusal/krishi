@@ -4,4 +4,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     # path('', views.index, name= 'HomePage'),
-] 
+    path('', views.indexView),
+    path('cropslist', views.showCropsList)
+]
+
