@@ -65,15 +65,13 @@ def secondPage(request, *args, **kwargs):
     }
     return render(request, "apiCallAndScan.html", context={"data": data})
   
-# def showCropsList(request):
-# 	#PRASANGA --- CROPS HERE HAI !! 
-# 	crops =[{"name":"rice" , "altitude":20, "temperature":10, "humidity": 5}, 
-# 			{"name":"wheat", "altitude":30, "temperature":5, "humidity": 52},
-# 			{"name":"barley" , "altitude":10, "temperature":-10, "humidity": 5}]
+def showCropsList(request):
+	#PRASANGA --- CROPS HERE HAI !! 
+	crops =[{"name":"rice" , "altitude":20, "temperature":10, "humidity": 5}, 
+			{"name":"wheat", "altitude":30, "temperature":5, "humidity": 52},
+			{"name":"barley" , "altitude":10, "temperature":-10, "humidity": 5}]
 
-# 	return render(request, "cropslist.html", {'crops':crops})
-
-    return render(request, "cropslist.html", {'crops':crops})
+	return render(request, "cropslist.html", {'crops':crops})
 
 def cropDetails(request, cropid):
     # Whatever the cropid, we need its data from the database.
