@@ -1,0 +1,23 @@
+{% load static %}
+<html>
+    <head>
+        <title> Welcome to the Krishi App. </title>
+        <script src = {% static 'getUserLocation.js' %} ></script>
+    </head>
+    <body>
+        // Replace with material header.
+
+        // Get the user's latitude and longitude on button click.
+        
+        // Stylize this 
+        <button class="" id = "proceedButton">
+            CONTINUE
+        </button>
+
+
+        <script>
+            var proceedButton = document.querySelector("#proceedButton");
+            proceedButton.addEventListener("click", getUserLocation);
+        </script>
+    </body>
+</html>
