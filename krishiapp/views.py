@@ -67,12 +67,22 @@ def secondPage(request, *args, **kwargs):
   
 def showCropsList(request):
 	#PRASANGA --- CROPS HERE HAI !! 
-	crops =[{"name":"rice" , "altitude":20, "temperature":10, "humidity": 5}, 
-			{"name":"wheat", "altitude":30, "temperature":5, "humidity": 52},
-			{"name":"barley" , "altitude":10, "temperature":-10, "humidity": 5}]
+    youralt  = 2000
+    yourtemp = 30
+    yourhum  = 40
+    queryset = Crops.objects.all()
+    # queryset = sorted( queryset, key= lambda t:t.distance(youralt, yourtemp, yourhum))
+    crops = []
+    for item in queryset:
+        crops.append({"id":item.pk, "name":item.cropName, "altitude":(item.minAltitude + item.maxAltitude)//2, "temperature":item.temperature, "humidity":item.humidity})
+	
+    return render(request, "cropslist.html", {'crops':crops})
 
-	return render(request, "cropslist.html", {'crops':crops})
+    # crops =[{"name":"rice" , "altitude":20, "temperature":10, "humidity": 5}, 
+	# 		{"name":"wheat", "altitude":30, "temperature":5, "humidity": 52},
+	# 		{"name":"barley" , "altitude":10, "temperature":-10, "humidity": 5}]
 
+	
 def cropDetails(request, cropid):
     # Whatever the cropid, we need its data from the database.
     # Uncomment these lines when done.
