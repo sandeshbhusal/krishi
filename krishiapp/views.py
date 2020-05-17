@@ -110,7 +110,6 @@ def cropDetails(request, cropid):
 
     # This section is purely for the map.
     # Crop growing countries:
-    countries = ['Nepal', 'India', 'Bhutan', 'Greece', 'Norway', 'Brazil', 'Chile', 'Canada']
     m = folium.Map(location = [0, 0], zoom_start = 1)
     # Start reverse geocoding countries and put markers on map.
     for country in countries:
