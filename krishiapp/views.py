@@ -2,6 +2,7 @@ from django.shortcuts import render
 import requests
 
 # Create your views here.
+
 def indexView(request):
     return render(request, "index.html", {})
 
@@ -30,3 +31,7 @@ def secondPage(request, *args, **kwargs):
 
     }
     return render(request, "apiCallAndScan.html", context={"data": data})
+  
+def showCropsList(request):
+	return render(request, "cropslist.html", {})
+
