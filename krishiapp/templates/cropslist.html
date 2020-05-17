@@ -1,0 +1,69 @@
+<!-- Page to display the crops table. Route : /cropslist -->
+
+<html>
+
+
+    <head>
+        <title>Crops List</title>
+        <style>
+            table {
+              margin-top: 20px;
+              font-family: arial, sans-serif;
+              border-collapse: collapse;
+              width: 100%;
+            }
+
+            td, th {
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+            }
+
+            tr:nth-child(even) {
+              background-color: #ddffdd;
+            }
+        </style>
+    </head>
+
+
+    <body>
+        <p>Based on your location, the following crops are available.</p>
+        
+        <label for="months">Month:</label>
+        <select id="months">
+          <option value="Jan">Jan</option>
+          <option value="Feb">Feb</option>
+          <option value="Mar">Mar</option>
+          <option value="Apr">Apr</option>
+          <option value="May">May</option>
+          <option value="Jun">Jun</option>
+          <option value="Jul">Jul</option>
+          <option value="Aug">Aug</option>
+          <option value="Sep">Sep</option>
+          <option value="Oct">Oct</option>
+          <option value="Nov">Nov</option>
+          <option value="Dec">Dec</option>
+        </select>
+        
+        <table>
+          <tr>
+            <th>Crop Name</th>
+            <th>Altitude</th>
+            <th>Humidity</th>
+            <th>Temperature</th>
+            <th>Actions</th>
+          </tr>
+
+        {% for crop in crops %}
+          <tr>
+            <td>{{crop.name}}</td>
+            <td>{{crop.altitude}}</td>
+            <td>{{crop.humidity}}</td>
+            <td>{{crop.temperature}}</td>
+            <td>
+              <button>View Details</button>
+            </td>
+          </tr>
+        {% endfor %}
+    </body>
+</html>
