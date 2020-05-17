@@ -2,12 +2,35 @@
 
 // Different parameters of the crop are passed, and a world map is shown on
 // the right.
-{% load leaflet_tags %}
-{% leaflet_js %}
-{% leaflet_css %}
-
 <div>
-    // Contains the tab bar.
+    detailDict = {
+        "cropName": crop.cropName or  "apple",
+        "altitude": crop.altitude or  "100ft",
+        "humidity": crop.humidity or  "20",
+        "temperature": crop.temperature or  "10*C",
+        "manpower": crop.manpower or  "10 people",
+        "fertilizer": crop.fertilizer or  "100KG",
+        "insecticides": crop.insecticides or  "Some pesticide",
+        "pesticides": crop.pesticides or  "Some pesticide",
+        "investment": crop.investment or  "NRs. 100,000",
+        "turnover": crop.turnover or  "NRs. 200,000",
+        "breakeven": crop.breakeven or  "200 KG"
+    }
+    <br />
+    Name: {{data.cropName}}<br />
+    Altitude: {{data.altitude}}<br />
+    Humidity: {{data.humidity}}<br />
+    Temperature: {{data.temperature}}<br />
+    Manpower: {{data.manpower}}<br />
+    Fertilizer: {{data.fertilizer}}<br />
+    Insecticides: {{data.insecticides}}<br />
+    Pesticides: {{data.pesticides}}<br />
+
+    <br />
+    <hr />
+    Investment: {{data.investment}}<br />
+    Turnover: {{data.turnover}} <br />
+    Breakeven: {{data.breakeven}} <br />
 </div>
 
 <div>

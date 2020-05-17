@@ -41,21 +41,21 @@ def showCropsList(request):
 def cropDetails(request, cropid):
     # Whatever the cropid, we need its data from the database.
     # Uncomment these lines when done.
-    # crop = models.Crops.get(pk=cropid)
+    crop = models.Crops.objects.get(pk=cropid)
 
     # Get the crop details.
     detailDict = {
-        "cropName": crop.cropName,
-        "altitude": crop.altitude,
-        "humidity": crop.humidity,
-        "temperature": crop.temperature,
-        "manpower": crop.manpower,
-        "fertilizer": crop.fertilizer,
-        "insecticides": crop.insecticides,
-        "pesticides": crop.pesticides,
-        "investment": crop.investment,
-        "turnover": crop.turnover,
-        "breakeven": crop.breakeven
+        "cropName": crop.cropName or  "apple",
+        "altitude": crop.altitude or  "100ft",
+        "humidity": crop.humidity or  "20",
+        "temperature": crop.temperature or  "10*C",
+        "manpower": crop.manpower or  "10 people",
+        "fertilizer": crop.fertilizer or  "100KG",
+        "insecticides": crop.insecticides or  "Some pesticide",
+        "pesticides": crop.pesticides or  "Some pesticide",
+        "investment": crop.investment or  "NRs. 100,000",
+        "turnover": crop.turnover or  "NRs. 200,000",
+        "breakeven": crop.breakeven or  "200 KG"
     }
 
     places = crop.places
