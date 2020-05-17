@@ -82,7 +82,17 @@
               <td>{{crop.humidity}}</td>
               <td>{{crop.temperature}}</td>
               <td>
-                <button>View Details</button>
+                <button id = "btn_{{crop.id}}"" data-id = {{crop.id}} > View Details</button>
+                <script>
+                  var cropBtn = document.querySelector("#btn_{{crop.id}}");
+                  cropBtn.addEventListener("click", goToPage);
+                  function goToPage(e){
+                    console.log(e.target.dataset.id)
+                    var website = window.location.host;
+                    var newLocation = "http://" + website + "/cropdetails/" + String(e.target.dataset.id)
+                    window.location = newLocation
+                  }
+                </script>
               </td>
             </tr>
           {% endfor %}
