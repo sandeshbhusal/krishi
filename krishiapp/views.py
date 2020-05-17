@@ -70,6 +70,7 @@ def showCropsList(request):
     youralt  = request.GET.get("altitude")
     yourtemp = request.GET.get("temperature")
     yourhum  = request.GET.get("humidity")
+    print("Cropslist received: ", youralt, yourtemp, yourhum)
     queryset = Crops.objects.all()
     # queryset = sorted( queryset, key= lambda t:t.distance(youralt, yourtemp, yourhum))
     crops = []

@@ -91,10 +91,19 @@
         <script>
             var searchRouteButton = document.querySelector("#searchRouteButton");
             searchRouteButton.addEventListener("click", routeSearchPage);
+            var humidity = {{ data.humidity }};
+            var temperature = {{ data.temperature }};
 
             function routeSearchPage(){
                 // First get the window location.
-                console.log(window.location)
+                var loc = window.location.search
+                all = loc.split('=')
+                alt = all[all.length-1]
+
+                // Generate a new URL for the second page.
+                var newLocation = "http://" + window.location.host + "/cropslist?altitude=" + String(alt) + "&temperature=" + String(temperature) + "&humidity=" + String(humidity);
+                // Redirect.
+                window.location = newLocation
             }
         </script>
     </body>
