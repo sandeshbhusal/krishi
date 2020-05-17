@@ -1,20 +1,50 @@
 {% load static %}
 <html>
     <head>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
         <title> Welcome to the Krishi App. </title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
         <script src = {% static 'js/getUserLocation.js' %} ></script>
     </head>
     <body>
-        // Replace with material header.
+        <nav class="navbar navbar-light">
+            <div class = 'col-md-3'>
 
-        // Get the user's latitude and longitude on button click.
-        
-        // Stylize this 
-        <button class="" id = "proceedButton">
-            CONTINUE
-        </button>
+            </div>
+            <div class = 'col-md-6'>
 
+                <a class="navbar-brand" href="#">
+                    <img src="https://cdn1.iconfinder.com/data/icons/andriod-app-logo/32/icon_k-512.png" width="30" height="30" alt="">
+                    &nbsp; &nbsp; के रोप्ने ?
+                </a>
+            </div>
+            <div class = 'col-md-3'>
+                
+            </div>
+        </nav>
+        <div class = 'pane'>
+            <h4>
 
+            Welcome to the KRopne App!
+            </h4>
+            <br />
+            <br />
+            We will scan your area automatically.
+            <br />
+            Tap the button below to give us location access
+            <br /><br /> <br />
+            <button type="button" class="btn btn-primary" id = "proceedButton">
+                CONTINUE
+            </button>
+        </div> 
+        <style>
+            .pane{
+                margin: 200px auto;
+                text-align: center;
+            }
+        </style>
         <script>
             var proceedButton = document.querySelector("#proceedButton");
             proceedButton.addEventListener("click", getUserLocation);

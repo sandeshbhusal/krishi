@@ -1,29 +1,92 @@
-// This page returns weather information and tells user to click the button to 
-// scan database.
+{% load static %}
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+        <title> Scanning your area | KRopne. </title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+        <script src = {% static 'js/getUserLocation.js' %} ></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-light">
+            <div class = 'col-md-3'>
 
-<table>
-    <tr>
-        <td> Your Location: </td>
-        <td> {{ data.location }} </td>
-    </tr>
+            </div>
+            <div class = 'col-md-6'>
 
-    <tr>
-        <td> Weather: </td>
-        <td> {{ data.descriptionOfWeather }} </td>
-    </tr>
+                <a class="navbar-brand" href="#">
+                    <img src="https://cdn1.iconfinder.com/data/icons/andriod-app-logo/32/icon_k-512.png" width="30" height="30" alt="">
+                    &nbsp; &nbsp; के रोप्ने ?
+                </a>
+            </div>
+            <div class = 'col-md-3'>
+                
+            </div>
+        </nav>
+        <br />
+        <div class = 'row' class = 'pane'>
+            <div class = 'col-md-3'>
 
-    <tr>
-        <td> Wind: </td>
-        <td> {{ data.wind }} </td>
-    </tr>
+            </div>
+            <div class = 'col-md-6'>
+                <table>
+                    <tr>
+                        <td> Your Location: </td>
+                        <td> {{ data.location }} </td>
+                    </tr>
+                
+                    <tr>
+                        <td> Weather: </td>
+                        <td> {{ data.descriptionOfWeather }} </td>
+                    </tr>
+                
+                    <tr>
+                        <td> Wind: </td>
+                        <td> {{ data.wind }} </td>
+                    </tr>
+                
+                    <tr>
+                        <td> humidity: </td>
+                        <td> {{ data.humidity }} </td>
+                    </tr>
+                
+                    <tr>
+                        <td> Current Temperature: </td>
+                        <td> {{ data.temperature }} </td>
+                    </tr>
+                </table>
 
-    <tr>
-        <td> humidity: </td>
-        <td> {{ data.humidity }} </td>
-    </tr>
+                <br />
+                <button type = "button" class = "btn btn-primary">
+                    Search for crops
+                </button>
+            </div>
+            <div class = 'col-md-3'>
 
-    <tr>
-        <td> Current Temperature: </td>
-        <td> {{ data.temperature }} </td>
-    </tr>
-</table>
+            </div>
+        </div>
+        <style>
+            .pane{
+                margin: 200px auto;
+                text-align: center;
+            }
+            table tr td{
+                padding: 16px;
+                margin: 10px;
+            }
+            table tr td:nth-child(1){
+                font-weight: bold;
+                color: black;
+                background: #f1f1f1;
+            }
+            table tr td:nth-child(2){
+                padding-left: 50px;
+            }
+        </style>
+    </body>
+</html>
