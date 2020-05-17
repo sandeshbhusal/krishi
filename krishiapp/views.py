@@ -2,6 +2,7 @@ from django.shortcuts import render
 from . import models
 import requests
 import geocoder
+import pandas as pd
 import folium
 
 from django.http import JsonResponse, HttpResponseRedirect, HttpResponse
@@ -113,15 +114,32 @@ def cropDetails(request, cropid):
     # Crop growing countries:
     m = folium.Map(location = [0, 0], zoom_start = 1)
     # Start reverse geocoding countries and put markers on map.
-    for country in countries:
-        # Reverse geocode:
-        api = f"http://api.positionstack.com/v1/forward?access_key=391ce60377e3a2b284675d583b2b703b&query={country}"
-        response = requests.get(api)
-        json = response.json()
-        # Search json items
-        for result in json.get("data"):
-            if result['name'] == result['country']:
-                folium.Marker([result['latitude'], result['longitude']], popup = f'{country}').add_to(m)
-                break
 
+    # for country in countries:
+    #     # Reverse geocode:
+    #     api = f"http://api.positionstack.com/v1/forward?access_key=391ce60377e3a2b284675d583b2b703b&query={country}"
+    #     response = requests.get(api)
+    #     json = response.json()
+    #     # Search json items
+    #     for result in json.get("data"):
+    #         if result['name'] == result['country']:
+    #             folium.Marker([result['latitude'], result['longitude']], popup = f'{country}').add_to(m)
+    #             break
+
+    # Alternate version: Pandas to the rescue!
+    import pandas as pd
+    import os
+    df = pd.read_csv(os.path.join(os.path.split(__file__)[0], "countries.csv"))
+    for country in countries:
+        try:
+            row = df.loc[df['name'] == country]
+            lat = (row['latitude'].iloc[0])
+            lon = (row['longitude'].iloc[0])
+            print("--------", lat, lon)
+            folium.Marker([lat, lon], popup = f'{country}').add_to(m)
+        except:
+            # SOme countries' data is not in csv file :(
+            print("invalid for ", country)
+            pass
+        
     return render(request, "cropdetails.html", {"map_": m._repr_html_(), "data": detailDict})

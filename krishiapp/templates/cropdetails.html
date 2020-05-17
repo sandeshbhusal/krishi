@@ -1,42 +1,62 @@
-// This file contains the crop details.
+{% load static %}
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+        <title> Scanning your area | KRopne. </title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+        <script src = {% static 'js/getUserLocation.js' %} ></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-light">
+            <div class = 'col-md-3'>
 
-// Different parameters of the crop are passed, and a world map is shown on
-// the right.
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
-<div>
-    detailDict = {
-        "cropName": crop.cropName or  "apple",
-        "altitude": crop.altitude or  "100ft",
-        "humidity": crop.humidity or  "20",
-        "temperature": crop.temperature or  "10*C",
-        "manpower": crop.manpower or  "10 people",
-        "fertilizer": crop.fertilizer or  "100KG",
-        "insecticides": crop.insecticides or  "Some pesticide",
-        "pesticides": crop.pesticides or  "Some pesticide",
-        "investment": crop.investment or  "NRs. 100,000",
-        "turnover": crop.turnover or  "NRs. 200,000",
-        "breakeven": crop.breakeven or  "200 KG"
-    }
-    <br />
-    Name: {{data.cropName}}<br />
-    Altitude: {{data.altitude}}<br />
-    Humidity: {{data.humidity}}<br />
-    Temperature: {{data.temperature}}<br />
-    Manpower: {{data.manpower}}<br />
-    Fertilizer: {{data.fertilizer}}<br />
-    Insecticides: {{data.insecticides}}<br />
-    Pesticides: {{data.pesticides}}<br />
+            </div>
+            <div class = 'col-md-6'>
 
-    <br />
-    <hr />
-    Investment: {{data.investment}}<br />
-    Turnover: {{data.turnover}} <br />
-    Breakeven: {{data.breakeven}} <br />
-</div>
-
-<div>
-    {{ map_ | safe }}
-</div>
+                <a class="navbar-brand" href="#">
+                    <img src="https://cdn1.iconfinder.com/data/icons/andriod-app-logo/32/icon_k-512.png" width="30" height="30" alt="">
+                    &nbsp; &nbsp; के रोप्ने ?
+                </a>
+            </div>
+            <div class = 'col-md-3'>
+                
+            </div>
+        </nav>
+        <br />
+        <div class = "row">
+            <div class = "col-md-3"></div>
+            <div class = 'col-md-6 row'>
+                <div class = 'col-md-6'>
+                    <div>
+                        Name: {{data.cropName}}<br />
+                        Altitude: {{data.altitude}}<br />
+                        Humidity: {{data.humidity}}<br />
+                        Temperature: {{data.temperature}}<br />
+                        Manpower: {{data.manpower}}<br />
+                        Fertilizer: {{data.fertilizer}}<br />
+                        Insecticides: {{data.insecticides}}<br />
+                        Pesticides: {{data.pesticides}}<br />
+                    </div>
+                </div>
+                <div class = 'col-md-6'>
+                    Investment: {{data.investment}}<br />
+                    Turnover: {{data.turnover}} <br />
+                    Breakeven: {{data.breakeven}} <br />
+                </div>
+                <br /><br /><br />&nbsp;
+                <div class = 'col-md-12'>
+                    <div>
+                        {{ map_ | safe }}
+                    </div>
+                </div>
+            </div>
+            <div class = 'col-md-3'></div>
+        </div>
+    </body>
+</html>
