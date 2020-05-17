@@ -33,5 +33,5 @@ class Crops(models.Model):
         yourAltitude    = (yourAltitude - 10)/(4000-10)
         yourHumidity    = (yourHumidity -25)/(65-25)
         yourTemperature = (yourTemperature +1)/(42 +1)
-        dist            = 1  (normalt - yourAltitude)**2 + 1  (normtemp - yourTemperature)**2 + 1* (normhum - yourHumidity)**2
+        dist            = 1 * (normalt - yourAltitude)**2 + 1 * (normtemp - yourTemperature)**2 + 1* (normhum - yourHumidity)**2
         return dist
