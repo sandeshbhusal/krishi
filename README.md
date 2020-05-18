@@ -3,7 +3,7 @@ This application is developed on top of Django, which lets the farmers look at
 the produces that they can generate in their areas.
 
 
-Winner Application in a one-day coding competition organized by Boston International College.
+Winner Application (First Prize and Most Organic Code) in a one-day coding competition organized by Boston International College.
 
 
 ##### How to run?
