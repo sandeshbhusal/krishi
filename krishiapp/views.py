@@ -10,7 +10,8 @@ from rest_framework import generics
 from rest_framework import permissions
 from .models import Crops
 from .serializers import CropSerializer
-
+from .apikeys import * 
+# TODO: Implement Apikeys in a different file and use this app! 
 class cropList(generics.ListCreateAPIView):
     queryset = Crops.objects.all()
     serializer_class = CropSerializer
@@ -51,7 +52,7 @@ def secondPage(request, *args, **kwargs):
     print(lat, lng, alt)
     
     # Get current temperature, wind and humidity
-    weatherApi = f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lng}&appid=0a52ba8dcd307d969881a23864a6230e"
+    weatherApi = f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lng}&appid={API_KEY_OPENWEATHER}"
     # Make a request and decode json data from api 
     resp = requests.get(weatherApi)
     weatherData = resp.json()
@@ -117,7 +118,7 @@ def cropDetails(request, cropid):
 
     # for country in countries:
     #     # Reverse geocode:
-    #     api = f"http://api.positionstack.com/v1/forward?access_key=391ce60377e3a2b284675d583b2b703b&query={country}"
+    #     api = f"http://api.positionstack.com/v1/forward?access_key={API_KEY_POSITIONSTACK}&query={country}"
     #     response = requests.get(api)
     #     json = response.json()
     #     # Search json items
